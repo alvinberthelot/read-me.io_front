@@ -7,7 +7,9 @@ import { MatAutocompleteModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReadMe } from "./services/readMe.service";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule, 
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ReadMe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

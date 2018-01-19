@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-
 import {MatAutocomplete} from '@angular/material'
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
+import {ReadMe} from "./services/readMe.service";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,20 @@ import {map} from 'rxjs/operators/map';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  versionAPI: string;
+
+  constructor(private readMe: ReadMe){
+    this.getVersion();
+  }
+
+  getVersion(){
+    this.readMe.getVersion().subscribe(
+      (result: any) => {
+        this.versionAPI = result.version;
+      }
+    );
+  }
 
   myControl: FormControl = new FormControl();
 
