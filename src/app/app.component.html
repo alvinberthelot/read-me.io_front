@@ -1,9 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container" style="text-align:center">
-  <h1 class="title">
-    Readme.io
-  </h1>
-  <img width="300" alt="Readme.io logo" src="assets/img/logo-readme.png">
+ 
+  <header>
+    <h1 class="title">
+      Readme.io
+    </h1>
+    <img width="300" alt="Readme.io logo" src="assets/img/logo-readme.png">    
+  </header>
   
 <form class="example-form"  ng-controller="myCtrl">
   <mat-form-field class="example-full-width">
@@ -26,6 +29,8 @@
   <button mat-button (click)="submitButton(template.value, extension.value)">Submit</button>
 </form>
 
+
+<div class="displayReadme" *ngIf="readmeFile"> <h2>Readme généré !</h2> {{ readmeFile }}</div>
 </div>
 
 <app-barre-footer></app-barre-footer>
