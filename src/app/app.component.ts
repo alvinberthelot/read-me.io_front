@@ -47,7 +47,17 @@ export class AppComponent implements OnInit {
 
   submitButton(template: any, extension: any) {
     console.log(template, extension);
-    this.readmeFile = "= project.title\n\nproject.description\n\n== Getting started\n\n=== Prerequisites\n\n=== Installing\n\n== Running the tests\n\n== Usage\n\n== Contributing\n\n== Authors\n\n== License\n";
+
+    if(template == undefined && extension == undefined)
+    {
+      this.readMe.getReadme().subscribe( ReadMe => {
+        this.readmeFile = ReadMe;
+      });
+    }
+    else
+    {
+      
+    }
   }
 
   ngOnInit() {
