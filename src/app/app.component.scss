@@ -1,15 +1,10 @@
 @import '../styles';
 
-.title {
-    font-family: $fontFamily;
-    color: $primaryFontColor;
-    letter-spacing: 3px;
-    font-size: 4em;
-    margin-top: 0;
-}
-
 .container{
     min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .displayReadme {
@@ -21,6 +16,7 @@
     color: $primaryFontColor;
     text-align: left;
     white-space: pre;
+    box-shadow: 2px 2px 10px $backgroundColor inset;
 }
 
 .displayReadme h2 {
@@ -33,5 +29,27 @@ app-barre-footer{
     height: 10vh;
     text-align: center;
     font-family: $fontFamily;
+}
+
+header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 12px;
+
+    .title{
+        padding: 0 40px;
+        font-family: $fontFamily;
+        color: $primaryFontColor;
+        letter-spacing: 3px;
+        font-size: 4em;
+        margin: 0;
+    }
+
+    img{
+        width: 250px
+    }
 }
 
