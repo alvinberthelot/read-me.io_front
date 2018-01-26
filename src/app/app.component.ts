@@ -17,35 +17,16 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {
 
   templateControl: FormControl = new FormControl();
-
-  templates = [
-    'Java',
-    'Javascript',
-    'C#'
-  ];
-
-  extensions = [
-    { value: 'txt', viewValue: '.txt' },
-    { value: 'asciii-doc', viewValue: '.ascii-doc' },
-    { value: 'markdown', viewValue: '.md' }
-  ]
-
-  readmeFile: string;
-  versionAPI: string;
-
   filteredOptions: Observable<string[]>;
+  templates = [];
+  extensions = [];
 
   constructor(private readMe: ReadMe) {
-    this.getVersion();
-    console.log(environment.api_url);
   }
 
-  getVersion() {
-    this.readMe.getVersion().subscribe(
-      (result: any) => {
-        this.versionAPI = result.version;
-      }
-    );
+  ngOnInit() {
+    this.getTemplates();
+    this.getExtention();
   }
 
   submitButton(template: any, extension: any) {
@@ -63,16 +44,29 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.filteredOptions = this.templateControl.valueChanges
+  getTemplates() {
+    this.readMe.getTemplates().subscribe(result => {
+      this.templates = result;
+
+      this.filteredOptions = this.templateControl.valueChanges
       .pipe(
-      startWith(''),
-      map(val => this.filter(val))
+        startWith(''),
+        map(val => this.filterLowerCase(val))
       );
+    });
   }
 
-  filter(val: string): string[] {
-    return this.templates.filter(option =>
+  getExtention() {
+    this.readMe.getExtention().subscribe(result => {
+      result
+        .map(item => {
+          this.extensions.push({value: item, viewValue: "." + item})
+        })
+    });
+  }
+
+  filterLowerCase(val: string): string[] {
+    return this.templates.filter(option => 
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 }
