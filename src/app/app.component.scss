@@ -9,7 +9,23 @@
 }
 
 .container{
-    height: 90vh;
+    min-height: 90vh;
+}
+
+.displayReadme {
+    padding: 5%;
+    background: #5d5d63;
+    border-radius: 20px;
+    margin: 0 9%;
+    font-family: $fontFamily;
+    color: $primaryFontColor;
+    text-align: left;
+    white-space: pre;
+}
+
+.displayReadme h2 {
+    font-size: 2.5em;
+    text-align: center;
 }
 
 app-barre-footer{
@@ -18,3 +34,4 @@ app-barre-footer{
     text-align: center;
     font-family: $fontFamily;
 }
+
