@@ -28,4 +28,10 @@ export class ReadMe {
     return this.http.get(request)
       .map((res: any) => res.results);
   }
+
+  getReadme() {
+    const request = this.url + "/generate";
+    return this.http.get(request)
+      .map((res:any) => res.result )
+  }
 }
