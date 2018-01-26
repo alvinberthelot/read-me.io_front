@@ -69,9 +69,4 @@ export class AppComponent implements OnInit {
     return this.templates.filter(option => 
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
-
-  submitButton(event: any, extension: any) {
-    console.log(event);
-    console.log(extension);
-  }
 }
