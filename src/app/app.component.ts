@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
     );
   }
 
-<<<<<<< HEAD
   submitButton(template: any, extension: any) {
     console.log(template, extension);
 
@@ -60,11 +59,6 @@ export class AppComponent implements OnInit {
     {
       
     }
-=======
-  submitButton(event: any, extension: any) {
-    console.log(event);
-    console.log(extension);
->>>>>>> e99e1faf99c770e36531ce7a549009417872a6ea
   }
 
   ngOnInit() {
