@@ -25,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     MatButtonModule,
     MatSelectModule,
     HttpClientModule
