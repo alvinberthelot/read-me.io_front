@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   templates = [];
   extensions = [];
+  readmeFile: string;
 
   constructor(private readMe: ReadMe) {
   }
@@ -31,18 +32,11 @@ export class AppComponent implements OnInit {
 
   submitButton(template: any, extension: any) {
     console.log(template, extension);
-
-    if(template == undefined && extension == undefined)
-    {
-      this.readMe.getReadme().subscribe( ReadMe => {
-        this.readmeFile = ReadMe;
-      });
-    }
-    else
-    {
-      
-    }
+    this.readMe.getReadme(template, extension).subscribe( readme => {
+      this.readmeFile = readme;
+    });
   }
+
 
   getTemplates() {
     this.readMe.getTemplates().subscribe(result => {
@@ -60,13 +54,13 @@ export class AppComponent implements OnInit {
     this.readMe.getExtention().subscribe(result => {
       result
         .map(item => {
-          this.extensions.push({value: item, viewValue: "." + item})
-        })
+          this.extensions.push({value: item, viewValue: '.' + item});
+        });
     });
   }
 
   filterLowerCase(val: string): string[] {
-    return this.templates.filter(option => 
+    return this.templates.filter(option =>
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 }
