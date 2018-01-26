@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class ReadMe {
 
-  private url = 'http://localhost:3000/api';
+  private url = environment.api_url + '/api';
 
   constructor(private http: HttpClient) {
   }
