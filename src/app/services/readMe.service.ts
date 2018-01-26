@@ -22,8 +22,8 @@ export class ReadMe {
   }
 
   getExtention() {
-    const request = `${this.url}/extention`;
+    const request = `${this.url}/extensions`;
     return this.http.get(request)
-      .map((res: any) => res);
+      .map((res: any) => res.extensions);
   }
 }

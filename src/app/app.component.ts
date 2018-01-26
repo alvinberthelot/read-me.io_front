@@ -18,13 +18,14 @@ export class AppComponent implements OnInit {
   templateControl: FormControl = new FormControl();
   filteredOptions: Observable<string[]>;
   templates = [];
-  extensions = [
-    {value: 'txt', viewValue: '.txt'},
-    {value: 'asciii-doc', viewValue: '.ascii-doc'},
-    {value: 'markdown', viewValue: '.md'}
-  ]
+  extensions = [];
 
   constructor(private readMe: ReadMe) {
+  }
+
+  ngOnInit() {
+    this.getTemplates();
+    this.getExtention();
   }
 
 
@@ -40,17 +41,22 @@ export class AppComponent implements OnInit {
     });
   }
 
-  submitButton(event: any, extension: any) {
-    console.log(event);
-    console.log(extension);
-  }
-
-  ngOnInit() {
-    this.getTemplates();
+  getExtention() {
+    this.readMe.getExtention().subscribe(result => {
+      result
+        .map(item => {
+          this.extensions.push({value: item, viewValue: "." + item})
+        })
+    });
   }
 
   filterLowerCase(val: string): string[] {
     return this.templates.filter(option => 
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+  }
+
+  submitButton(event: any, extension: any) {
+    console.log(event);
+    console.log(extension);
   }
 }
