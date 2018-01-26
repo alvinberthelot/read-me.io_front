@@ -6,6 +6,7 @@ import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
 import {ReadMe} from './services/readMe.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { extend } from 'webdriver-js-extender';
 
 @Component({
   selector: 'app-root',
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
     );
   }
 
+<<<<<<< HEAD
   submitButton(template: any, extension: any) {
     console.log(template, extension);
 
@@ -58,6 +60,11 @@ export class AppComponent implements OnInit {
     {
       
     }
+=======
+  submitButton(event: any, extension: any) {
+    console.log(event);
+    console.log(extension);
+>>>>>>> e99e1faf99c770e36531ce7a549009417872a6ea
   }
 
   ngOnInit() {

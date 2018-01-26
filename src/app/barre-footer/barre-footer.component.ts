@@ -24,7 +24,5 @@ export class BarreFooterComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
-
