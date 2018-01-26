@@ -7,7 +7,7 @@
   
 <form class="example-form"  ng-controller="myCtrl">
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Pick one template" aria-label="Number" matInput [formControl]="templateControl" [matAutocomplete]="auto">
+    <input type="text" placeholder="Pick one template" aria-label="Number" matInput [formControl]="templateControl" [matAutocomplete]="auto" #template>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{ option }}
@@ -16,16 +16,18 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Pick extension">
+    <mat-select placeholder="Pick extension" #extension>
       <mat-option *ngFor="let extension of extensions" [value]="extension.value">
         {{ extension.viewValue }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button mat-button (click)="submitButton(template.value)">Submit</button>
+  <button mat-button (click)="submitButton(template.value, extension.value)">Submit</button>
 </form>
 
+
+<div class="displayReadme" *ngIf="readmeFile"> <h2>Readme généré !</h2> {{ readmeFile }}</div>
 </div>
 
 <app-barre-footer></app-barre-footer>

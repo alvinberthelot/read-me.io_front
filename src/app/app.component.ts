@@ -27,6 +27,8 @@ export class AppComponent implements OnInit {
     {value: 'asciii-doc', viewValue: '.ascii-doc'},
     {value: 'markdown', viewValue: '.md'}
   ]
+
+  readmeFile: string;
   versionAPI: string;
   
   filteredOptions: Observable<string[]>;
@@ -43,8 +45,9 @@ export class AppComponent implements OnInit {
     );
   }
 
-  submitButton(event: any) {
-    console.log(event);
+  submitButton(template: any, extension: any) {
+    console.log(template, extension);
+    this.readmeFile = "= project.title\n\nproject.description\n\n== Getting started\n\n=== Prerequisites\n\n=== Installing\n\n== Running the tests\n\n== Usage\n\n== Contributing\n\n== Authors\n\n== License\n";
   }
 
   ngOnInit() {
