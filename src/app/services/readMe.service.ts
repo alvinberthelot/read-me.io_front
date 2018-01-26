@@ -18,12 +18,12 @@ export class ReadMe {
   getTemplates() {
     const request = `${this.url}/templates`;
     return this.http.get(request)
-      .map((res: any) => res.results);
+      .map((res: any) => res.templates);
   }
 
   getExtention() {
     const request = `${this.url}/extention`;
     return this.http.get(request)
-      .map((res: any) => res.results);
+      .map((res: any) => res);
   }
 }

@@ -16,32 +16,28 @@ import { extend } from 'webdriver-js-extender';
 export class AppComponent implements OnInit {
 
   templateControl: FormControl = new FormControl();
-  
-  templates = [
-    'Java',
-    'Javascript',
-    'C#'
-  ];
-
+  filteredOptions: Observable<string[]>;
+  templates = [];
   extensions = [
     {value: 'txt', viewValue: '.txt'},
     {value: 'asciii-doc', viewValue: '.ascii-doc'},
     {value: 'markdown', viewValue: '.md'}
   ]
-  versionAPI: string;
-  
-  filteredOptions: Observable<string[]>;
 
   constructor(private readMe: ReadMe) {
-    this.getVersion();
   }
 
-  getVersion() {
-    this.readMe.getVersion().subscribe(
-      (result: any) => {
-        this.versionAPI = result.version;
-      }
-    );
+
+  getTemplates() {
+    this.readMe.getTemplates().subscribe(result => {
+      this.templates = result;
+
+      this.filteredOptions = this.templateControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(val => this.filterLowerCase(val))
+      );
+    });
   }
 
   submitButton(event: any, extension: any) {
@@ -50,15 +46,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredOptions = this.templateControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filter(val))
-      );
+    this.getTemplates();
   }
 
-  filter(val: string): string[] {
-    return this.templates.filter(option =>
+  filterLowerCase(val: string): string[] {
+    return this.templates.filter(option => 
       option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 }
